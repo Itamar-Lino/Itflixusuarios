@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ITFLIX USUARIÁRIO</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-grid"></div>
+    <div class="container">
+        <header class="app-header">
+            <div class="logo">
+                <i class="fas fa-user-astronaut"></i>
+                <h1>ITFLIX <span>USUAÁRIO</span></h1>
+            </div>
+            <div class="mobile-menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="stats" id="statsPanel">
+                <div class="stat-box">
+                    <span class="stat-value" id="totalUsers">0</span>
+                    <span class="stat-label">Total</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-value" id="activeUsers">0</span>
+                    <span class="stat-label">Ativos</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-value" id="expiringUsers">0</span>
+                    <span class="stat-label">Expirando</span>
+                </div>
+            </div>
+        </header>
+        
+        <main class="content">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Buscar usuários...">
+            </div>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="active">Ativos</button>
+                <button class="filter-btn" data-filter="expiring">Expirando</button>
+                <button class="filter-btn" data-filter="expired">Expirados</button>
+            </div>
+            
+            <div class="user-list" id="userList">
+                <!-- Lista de usuários será carregada aqui -->
+            </div>
+            
+            <button class="add-user-btn" id="addUserBtn">
+                <i class="fas fa-user-plus"></i>
+            </button>
+        </main>
+    </div>
+    
+    <!-- Modal de Cadastro -->
+    <div class="modal" id="userModal">
+        <div class="modal-glass">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">CADASTRAR USUÁRIO</h2>
+                    <span class="close-btn" id="closeModal"><i class="fas fa-times"></i></span>
+                </div>
+                
+                <form id="userForm">
+                    <input type="hidden" id="userId">
+                    
+                    <div class="form-group neon-input">
+                        <label for="name">NOME COMPLETO</label>
+                        <input type="text" id="name" required>
+                        <div class="input-highlight"></div>
+                    </div>
+                    
+                    <div class="form-group neon-input">
+                        <label for="username">USUÁRIO</label>
+                        <input type="text" id="username" required>
+                        <div class="input-highlight"></div>
+                    </div>
+                    
+                    <div class="form-group neon-input">
+                        <label for="password">SENHA</label>
+                        <input type="password" id="password" required>
+                        <div class="input-highlight"></div>
+                    </div>
+                    
+                    <div class="form-group neon-input">
+                        <label for="code">CÓDIGO</label>
+                        <input type="text" id="code" required>
+                        <div class="input-highlight"></div>
+                    </div>
+                    
+                    <div class="form-group neon-select">
+                        <label for="category">CATEGORIA</label>
+                        <select id="category" required>
+                            <option value="">SELECIONE...</option>
+                            <option value="Unitv">UNITV</option>
+                            <option value="Youcine">YOUCINE</option>
+                            <option value="Unitv Net">UNITV NET</option>
+                            <option value="Brasil TV">BRASIL TV</option>
+                        </select>
+                        <div class="select-arrow"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    
+                    <div class="form-group neon-input">
+                        <label for="expiration">DATA DE EXPIRAÇÃO</label>
+                        <input type="date" id="expiration" required>
+                        <div class="input-highlight"></div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel" id="cancelBtn">
+                            <i class="fas fa-ban"></i> CANCELAR
+                        </button>
+                        <button type="submit" class="btn-confirm" id="saveBtn">
+                            <i class="fas fa-save"></i> SALVAR
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Detalhes -->
+    <div class="modal" id="detailModal">
+        <div class="modal-glass">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>DETALHES DO USUÁRIO</h2>
+                    <span class="close-btn" id="closeDetailModal"><i class="fas fa-times"></i></span>
+                </div>
+                
+                <div class="user-details" id="userDetails">
+                    <!-- Detalhes do usuário serão carregados aqui -->
+                </div>
+                
+                <div class="detail-actions">
+                    <button class="btn-action btn-edit" id="editUserBtn">
+                        <i class="fas fa-edit"></i> EDITAR
+                    </button>
+                    <button class="btn-action btn-renew" id="renewUserBtn">
+                        <i class="fas fa-sync-alt"></i> RENOVAR
+                    </button>
+                    <button class="btn-action btn-delete" id="deleteUserBtn">
+                        <i class="fas fa-trash-alt"></i> EXCLUIR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
